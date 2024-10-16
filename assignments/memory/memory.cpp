@@ -28,7 +28,8 @@ void test_aligned_access() {
     std::cout << "Aligned access time: " << aligned_time << " microseconds" << std::endl;
 
     // Clean up
-    delete[] aligned_memory;
+    // delete[] aligned_memory;
+    std::free(aligned_memory);
 }
 
 void test_misaligned_access() {

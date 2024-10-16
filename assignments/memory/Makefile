@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -O2 -g
+CXXFLAGS = -std=c++17 -O0 -g
 
 TARGET = memory
 
