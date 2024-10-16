@@ -1,0 +1,26 @@
+Bit Error Rates
+* Reality doesn't match the determinism assumed in computing
+* Bit errors are rare enough that data storage not built to recover from them
+* Bit error rate ~10^-3
+    * Num. of computations per sec: ~10^9
+    * Chance of bit error: ~10^-12
+    * Servers: (AWS ~10^7 servers)
+    * Seconds in a year: (3.15)*10^7
+    * Bit errors per year (AWS): (3.15)*10^4
+
+ECC RAM (Error Correcting Code)
+* Has backup bits for every bit in RAM
+    * Can detect up to 2 bit errors (per bit)
+    * Can correct any 1 bit error (per bit)
+* Therefore, assuming independence, 10^-24 = chance of 2 bit errors
+* Much, much less likely to suffer a bit error, need incredible scale to consistenly see any
+
+Profiling
+* SSD tries to cache important information to RAM
+    * RAM tries to cache important information to Core
+* When many processes require more SSD/RAM/Core caching, system slows down to decrease need per process
+
+Efficiency
+* Efficient sort() algorithm is ~O(n log n) time
+* Accessing one element in RAM/cache is not necessarily O(1) time
+    * If page doesn't match from current element to new one, can take lots of effort to find in RAM/cache

@@ -1,0 +1,18 @@
+How ECC (Error Correcting Code) RAM works:
+    11 bits -> 2^11 codes (2048)
+    5 values
+        each value: (ex) 10110110101
+        11 bits means 11 possible 1-bit errors
+    each value stored creates a "cloud" of every address that could be bit
+    errored to
+        means that 1 value takes up 12 bits in this example
+    when a bit error occurs within the cloud, the ECC code sends it back to
+    the intended bit
+
+Mutex:
+* Shared resource: a process, tool, or structure that multiple threads
+    potentially want to use simultaneously
+    * Example: only one person can use a chair at a tim, but multiple
+        people may want to use it simultaneously
+* #include <pthreads> and mutex ensures that one thread can access and
+    modify the shared resource at a time, with efficient hand-offs

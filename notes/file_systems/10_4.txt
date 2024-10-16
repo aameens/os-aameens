@@ -1,0 +1,21 @@
+File System
+* A graph of directories
+* Each directory contains an element that acts as a folder
+    * Example: files[data, permissions]
+* There is a danger of infinite recursion due to symbolic and hard links
+    * Symbolic Links: "pointers" in the file system
+    * Hard Links
+
+Examples of different File Systems:
+* Windows
+    * C: -> tree, F: -> tree, D: -> tree
+* Others
+    * Root -> /home -> tree
+* Matters of case sensitivity and other details vary
+
+Storage Systems
+* SSD: banks of capacitors
+    * the charge/discharge state of the capacitors represents the data
+    * SSD capacitors are so tightly-packed that bit errors are common
+        * as a result basically all SSD drives use ECC blocks to protect read/write
+        

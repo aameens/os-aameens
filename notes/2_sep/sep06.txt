@@ -1,0 +1,9 @@
+Decision Tree                               
+Start has a p = 1.                          *
+Next steps have sum(p) = 1.               / | \
+    etc.                                   etc
+
+Monte-Carlo - reroll the dice many times and analyze results to find probabilities, other data.
+    can miss low-probability cases
+Forks - consider each possible case of the dice roll, use set probability or other tools to find probabilities, other data.
+    always finds every possible case

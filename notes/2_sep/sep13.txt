@@ -1,0 +1,6 @@
+There should be one mutex for every shared resource when using multiple simultaneous threads/processes
+
+dining philosophers problem:
+* 5 "philosophers" (threads) sit a table
+* share a resource (food)
+* each philosopher is either thinking (waiting) or eating (acting on shared resource)

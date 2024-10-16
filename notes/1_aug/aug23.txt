@@ -1,0 +1,28 @@
+How to Copy a File:
+    command: cp
+    
+    But what does a copy command look like?
+
+When running a process:
+    Interfacing with many tools, many libraries, in the system
+        libc particularly fundamental to operation of useful programs, almost all useful programs in C interface with libc
+
+
+    test_copy
+:---------------:
+: Kernel        : Kernel is the doorman for permissions for whether and how programs can modify memory; Every process uses same Kernel (like a pointer)
+:_______________:
+| Stack V       | Top of the stack ~127TB data points in memory (will never ever reach the bottom possible of RAM)
+|               |
+| Heap ^        |
+| Globals       |
+| Literals      |
+|_______________|
+| Code          | \
+| write() etc.  |   CPU (core), PC (program counter)
+|_______________| /
+
+Virtual Address Spaces
+    MMU (Memory Mapping Unit): Maps VAS to physical space on the machine; MMU essentially part of the CPU
+        VAS = registers between 0 and ~127TB used by program counter
+        PAS = registers in the actual RAM, mapped from VAS by MMU

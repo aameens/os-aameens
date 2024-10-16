@@ -1,0 +1,39 @@
+
+sudo    /-- pid (process id)    user id / real id
++------------+
+|            |
++------------+
+| old sp   < |
+| old pc   < |
+| int buf[#] |
++------------+
+| parameters |
+| local vars |
++------------+
+|            |
++------------+
+| code ...   |
++------------+
+
+
+sudo runs as root user, remembers that it was accessed as <user> (ex. ameens)
+    sudo is itself a program, a process.
+    means "set user id to root, then run given command, then return user id to original"
+
+if (fork() == 0)
+{
+    setiud(new_user)
+    exec( ... )
+}
+
+kernel can limit access even to developers because the sudo command allows them to temporarily gain highest-level access
+
+each tab in a web browser is its own process (isolates for security and resource management)
+    opening a new tab creates a fork of a template tab inaccessible to the user - much faster load time
+
+in Windows, child processes can exist when their parent processes are killed. in Mac/Linux all processes exist on one tree - parent processes can only be killed if they have no active children.
+
+buffer overflow attack:
+    almost 100% of vulnerabilities are the result of some human error
+    when a buffer of commands overflows into important memory addresses and manipulates code that should be inacessible
+        this enables the program counter to execute code that was injected by buffer overflow attack

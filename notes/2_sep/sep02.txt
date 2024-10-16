@@ -1,0 +1,22 @@
+buffer overflow protection (and others) depend on what code infrastructure you're using (protecting).
+
+iOS devices use ARM-based CPUs, structured:
+    1. stack frame
+        * return address
+        * local vars
+        * saved registers
+        * previous frame pointer
+    2. stack growth
+        * grows downfard from hi -> lo addresses
+    3. stack pointer, frame pointer
+        * stack pointer (sp) points to the top of the current stack frame
+        * frame pointer (fp, aka base pointer bp) points to fixed location, used to access saved registers and local vars
+    4. link register (lr)
+        * stores return address
+    5. prologue, epilogue
+        * prologue is the function part which builds the stack frame
+        * epilogue is the function part which restores the previous state
+    6. ARM calling convention (AAPCS)
+        * first arguments passed in registers 'x0' to 'x7'
+        * additional registers filled
+        

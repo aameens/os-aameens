@@ -1,0 +1,52 @@
+Wait -> Ready -> Run -> Repeat
+
+Priority Lowering (nice) is easy. Raising is:
+* Highest Priority First
+    * Round Robin
+    * Shortest Job First
+        * Avg Run Time?
+        * Arithmetic?
+        * Geometric?
+
+Each Process:
++----------+
+| ALU      |
+| Cache :: |
++----------+
+
+You want to maintain a state such that the currently running (or waiting) code
+is stored in the cache
+
+Core Affinity: a good idea until it isn't
+* Don't want to keep one core at capacity with others dormant
+* Usually keeps things organized and efficient between one family of processes
+* Strict core affinity can definitely be a problem as a result
+    * Want to be flexible, delegate parts of a process family to other cores when near capacity
+* Vulnerabilities (timing attacks):
+    * Programs can manipulate and access the cache to detect information about other processes
+    * OS can do nothing to help you if attacks are targeted within the same process
+* Attack Prevention:
+    * Reset the cache when a process starts (in it)
+        * Costs performance
+    * Have to choose between performance/accessibility and security
+
+Cache:
+* Page - 4k
+    * Page Replacement Algorithm (to keep the cache efficient)
+        * Least Recently Used (can be manipulated, theoretical best)
+        * Random (generally secure, not perfect)
+
+Random error rate of RAM: 10 E -10
+Processing rate of CPU:   1-5 gHz
+That means: About 1 random error per 10 seconds
+
+RAM:
++------------+
+| gid 1000   |
++------------+
+| page->core |
++------------+
+|            |
++------------+
+
+* Vulnerable to a thermal attack via running max processes in RAM, core, cache, etc.

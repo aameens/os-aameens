@@ -1,0 +1,14 @@
+Threads
+* allow you to "switch hats" quickly to complete many tasks simultaneously
+    * can start new threads part-way through a task more greatly increased efficiency
+* multiple cores act similarly, but have a limited number and some need to be dedicated to certain functions
+
+it is important to prevent one thread from editing code/information that is being accessed/edited by another thread
+* can cause seg faults, logic errors, etc.
+
+*mutex* protects access to shared resources from being used by two threads simultaneously
+
+Mutex
+* selects one thread to have read/write permissions to a section of code at a time
+* as soon as a thread finishes interacting with that section of code, the "baton" is passed to the next
+* need to ensure that the "baton" gets passed before continuing to process, prevent build-up of waiting threads

@@ -1,0 +1,14 @@
+Bus misalignment
+
+Bus
+* 64-bit connection from Core <-> Ram
+* Inefficient to use the Bus to send anything smaller than 8 bytes (8 bytes = 64 bits)
+* double x=37; is exactly one bus in size
+* Larger data sizes or misaligned bus reads can increase commands by up to 7 bytes
+* Managing bus alignment can greatly improve the time/space efficiency of a process
+
+ex: class Pixel
+{
+    uint8_t r,g,b; // r,g,b is only 3 bytes, very prone to misalignment because not 3 not a multiple of 8
+    uint8_t r,g,b,a; // even if you don't use a, the bus will be aligned because 4 is a multiple of 8
+}

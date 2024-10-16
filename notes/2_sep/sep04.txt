@@ -1,0 +1,43 @@
+when the buffer overflows into other code on the stack, the memory it flows into is corrupted
+    can access/change information normally inaccessible
+    can insert code to execute external commands
+
+address randomization - changing beginning offset for the stack and the code - makes it incredibly hard to accurately buffer overflow.
+    basically impossible to guess a 64-bit random number, external attackers will practically never find the offset.
+
+can use canary values to ensure other frames haven't been compromised
+
+as a coder, don't write functions that allow an arbitrarily large amount of user input without checking its validity
+
+format(const vector<byte_t> &buffer) # const protects buffer from us, doesn't protect buffer from manipulation elsewhere
+{
+    if (buffer.size() >= msg.size())
+    {
+        ...
+    }
+}
+
+Rust is a memory-safe + high-performance language, so while you have to be extremely specific in your code-writing,
+    it is extremely safe from buffer-overflow and other memory-manipulation attacks.
+
+buffer overflow attacks commonly used to plant root-kits and botnets so that hackers can sell botnet services to DDOS
+    target of client's choice.
+
+can use idea of forks to create multiple "universes" to play out both results of a coin flip
+    can make a fork for every possible outcome regardless of probability
+        ex. determine result of 1/1bill chance without running billions of simulated outcomes
+
++---+
+|   | , flip a coin
++---+
+
++---+       +---+
+|   | 1/2,  |   | 1/2 , roll 1d6
++---+       +---+
+
++---+   +---+   +---+   +---+   +---+   +---+
+|   |   |   |   |   |   |   |   |   |   |   | , 1/2*1/6 each
++---+   +---+   +---+   +---+   +---+   +---+
++---+   +---+   +---+   +---+   +---+   +---+
+|   |   |   |   |   |   |   |   |   |   |   | , 1/2*1/6 each
++---+   +---+   +---+   +---+   +---+   +---+

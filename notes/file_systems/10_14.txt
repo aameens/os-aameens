@@ -1,0 +1,24 @@
+Erasing is the bottleneck for read/write data to/from hard drive
+
+Can cook parts of hard drive if you read/write them too much
+
+SSD is usually the best, but when massive amounts of data need to be stored then price/lifespan
+    can become a limiting factor
+
+Server rooms should be *decoupled* so that if something goes wrong in one server room the backup
+    won't also be damaged by the same source
+* need a redundant server room (either cloud or physical)
+
+Practice/emulate emergencies ("fire drills") to ensure backup processes are functional
+
+Mark bad sectors to avoid storing in (except for use as a secret storage)
+
+HAL (Hardware Abstraction Layer) - software in almost every machine:
+* Store information as a list of blocks, highly decentralized but can be inefficient with partial blocks
+
+Redundancy:
+* RAID
+    * multiple layers of redundancy (using multiple same blocks to ensure completeness of the single unique block)
+    * RAID: 1 has one copy, often okay but bare minimum. Everything should usually be at least RAID: 1
+    * RAID: 0 for pure optimization nonsense, almost never a good idea
+    * Probability of an error when decoupled at RAID: n = p^n

@@ -1,0 +1,37 @@
+Three modern types of storage:
+    SSD: Solid State Drive
+    HDD: Hard Disk Drive
+    ISCSI: "the cloud"
+
+Each level of RAID: X is the number of duplicates for each code block (1x write, 'X'x read)
+
+RAID: 0 "gamer solution", incredibly risky but peak theoretical performance
+
+RAID: 1 is perfectly fine for small/personal storage
+
+RAID: 2 is min for always-on servers, since there will still be a redundancy when one disk is removed
+    for maintenance/upgrade/corrupted
+
+N disks, want to turn into M <= N disks means there are N-M redundancy disks
+
+Encryption at Rest: aquired data is useless without the decryption key
+
+Always follow best practices and use well-tested tools for en/de-cryption
+
+CHECKPOINTS / SNAPSHOTS
+
+old backup system
+    '. take down the system
+    2. update it
+    3. then turn it back on
+
+backup to a working system
+    have to use checkpoints: copy-on-write
+    backs up while things run/change
+
+JOURNALING
+
+logs changes as they happen, can find any failed changes if
+    the log doesn't match the disk, and react accordingly
+much easier to check if everything in the last journal time (ex. 15 sec) which is very small
+    as opposed to the entire file system for correctness

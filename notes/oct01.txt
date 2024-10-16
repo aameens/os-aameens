@@ -1,0 +1,15 @@
+Array vs. Vector
+
+array:
+* exact-size immutable set of n elements of m type
+* stored in one complete block
+
+vector:
+* variable-size set of lements of m type
+* contains 3 points of data when created:
+    * capacity
+    * size
+    * data
+        * pointer to heap for data storage
+        * not necessarily stored in one block
+        * nested vectors can be all over the place

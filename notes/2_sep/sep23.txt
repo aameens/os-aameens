@@ -1,0 +1,23 @@
+Scheduling: the system by which processes are switched between to maintain optimal computing efficiency
+
+CPU: caches are much more efficient to access than the memory (RAM)
++--------+--------+       RAM 
+| Core 0 | Core 1 |     +-----+
+| cache  | cache  |     |     |
+|--------|--------| ==> |     |
+| Core 2 | Core 3 |     |     |
+| cache  | cache  |     +-----+
++--------+--------+
+
+Each process has a *priority*, which determines when and how much cache/CPU allocation they get at any time
+* Standard is from -20 (highest priority) to 19 (lowest priority)
+* One example of a high-priority process is UI updates (scrolling, moving a window, etc.)
+    * How do you manage processes with an equal priority #?
+        * Common system is Round Robin - give every equal-priority process one clock cycle at a time
+            * Time-sensitive processes need to be either higher priority or exempt from Round Robin scheduling
+        * Can be made similarly to a stack, ex. FIFO
+        * Best option is usually "Shortest Job First"
+
+Arithmetrics vs Geometric Average
+* Arithmetic: sum of parts / num of parts
+* Geometric: take N samples and run an update to find running average

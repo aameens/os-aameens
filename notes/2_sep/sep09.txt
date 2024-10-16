@@ -1,0 +1,25 @@
+Process Table
++------+------+------+------+
+| PID  |      | 1000 |      |
+| REG  |      |      |      |
++------+------+------+------+
+
+Most processes are in one of 3 states:
+1. Waiting
+2. Ready
+3. Running
+
+Processes go from waiting -> ready (process finishes, then next prepare next action)
+Procseses go from ready -> reading (next action prepared, then taken)
+Processes go from running -> waiting (action taken, then wait for process (ex. i/o) to complete)
+
+Often there's a real-time clock in the background which calls interrupt(yield) for you so that any
+spare computing power can be spent on other processes.
+
+A thread is very similar to a process, but each thread shares a lot with other threads, unlike processes.
+* Share the same heap, the same code, only the *stack* is unique between threads
+* Main thread has the full stack, secondary threads' stack created from "scratch space" separated from the heap
+
+mutex:
+    think of it as a system which ensures that processes/threads can share some resources
+    temporarily halts process/thread while shared resources are in use by other process/thread

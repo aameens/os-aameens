@@ -1,0 +1,72 @@
+Computer RAM, CPU, and network all connect through the kernel, stack, and code to
+fulfill *processes*.
+
++-----+      +-----------------+
+| RAM | -->  | Kernel     (IO) |
++-----+      +-----------------+
+             | : Stack [_____] |
++-----+      | :       [_____] |
+| CPU | -->  | V       [_____] |
++-----+      |         [_____] |
+             | Heap    [_____] |
++-----+      +-----------------+
+| NET | -->  | CODE       (PC) |
++-----+      +-----------------+
+
+Hardware Interrupt: when CPU, RAM, or NET calls an interrupt to move the mouse, call I/O, etc.
+
+Software Interrupt: when your code calls an interrupt to move the mouse, call I/O, etc.
+
+Containers take advantage of API subsets to use linux/windows entry points on other machines.
+
+Boot:
+* Vulnerabilities in the boot cycle (or not booted) are free real estate for hackers.
+* Kernel
+    * init (1) - the very first process in the boot cycle. Initializes security measures and rest of boot process.
+        * systemd
+        * antivirus (ex. win defender)
+        * login process
+        * security measures
+        * etc.
+
+       pid = 1000                           pid = 1001
++----------------------+ (Kernel)    +----------------------+ (Kernel)
+|                      |             |                      |
++----------------------+ (Stack)     +----------------------+ (Stack)
+|                      |             |                      |
+|                      |             |                      |
+|                      |             |                      |
++----------------------+ (Code)      +----------------------+ (Code)
+| fork()               |             |                      |
++----------------------+             +----------------------+
+
+fork() creates two instances
+* one continues from before fork was called, one is a new exact duplicate state.
+* each fork can tell whether they are the original or the fork.
+
+Example fork() Code:
+
+pid_t child_pid = 0;
+if ((child_pid == fork()) > 0)
+{ // code for original process
+    ...
+}
+else if (child_pid == 0)
+{ // code for child process
+    exec(...)
+}
+else
+{
+    broken
+}
+
+    exec()   
++------------+ (Kernel)
+|            |
++------------+ (Stack)
+|            |
++------------+ (Code)
+| main: ...  |
++------------+
+
+~80% of code is error cases, most executions of a process don't interact with most of the code for that process.
